@@ -102,7 +102,7 @@ while (true)
         Console.Write("Podaj Rocznik: ");
         int rocznik = parsuj(Console.ReadLine());
 
-        if (Cena!=-1 || Przebieg != -1.0 || rocznik != -1)
+        if (Cena!=-1 && Przebieg != -1.0 && rocznik != -1 && rocznik <= 2026 && rocznik >= 1900)
         {
             Auto nowy_samochod = new(Cena, Model, Marka, Przebieg, rocznik);
             samochody.Add(nowy_samochod);

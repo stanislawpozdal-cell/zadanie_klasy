@@ -36,8 +36,8 @@ namespace zadanie_klasy
         {
             Console.WriteLine($"Model: {model}");
             Console.WriteLine($"Marka: {marka}");
-            Console.WriteLine($"Cena: {cena}");
-            Console.WriteLine($"Rocznik: {rocznik}");
+            Console.WriteLine($"Cena: {cena}zł");
+            Console.WriteLine($"Rocznik: {rocznik}r");
         }
 
         public void Promocja()
