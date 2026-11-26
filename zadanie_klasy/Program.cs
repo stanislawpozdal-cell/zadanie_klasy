@@ -23,12 +23,13 @@ double parsuj_d(string a)
         return -1.0;
     }
 }
-
+List<Auto> samochody = new List<Auto>();
 Auto samochód = new(100000.0, "Passat", "Volkswagen", 0, 2026);
+samochody.Add(samochód);
 while (true)
 {
     
-    Console.WriteLine("\nWybierz:\n0 jeżeli chesz zakończyć program\n1 jeżeli chcesz wypisać dane swojego samochodu\n2 jeżeli chcesz prowadzić swój samochód\n3 jeżeli chcesz zatrzymać samochód\n4 jeżeli chcesz zrobić promocję\n5 jeżeli chesz stworzyć nowy samochód");
+    Console.WriteLine("\nWybierz:\n0 jeżeli chesz zakończyć program\n1 jeżeli chcesz wypisać dane swoich  samochodów\n2 jeżeli chcesz prowadzić swój samochód\n3 jeżeli chcesz zatrzymać samochód\n4 jeżeli chcesz zrobić promocję\n5 jeżeli chesz stworzyć nowy samochód");
     int wynik = parsuj(Console.ReadLine());
 
     if (wynik == 0)
@@ -37,19 +38,56 @@ while (true)
     }
     else if (wynik == 1)
     {
-        samochód.Opisz();
+        int i = 0;
+        foreach (var samochod in samochody)
+        {
+            Console.WriteLine($"Indeks: {i}");
+            samochod.Opisz();
+            Console.WriteLine("\n");
+            i++;
+        }
+            
+        
+        
     }
     else if (wynik == 2)
     {
-        samochód.Prowadz();
+        Console.Write("Podaj indeks samochodu, który chcesz prowadzić: ");
+        int i = parsuj(Console.ReadLine());
+        if (i >= 0 && i < samochody.Count)
+        {
+            samochody[i].Prowadz();
+        }
+        else
+        {
+            Console.WriteLine("Niepoprawny indeks");
+        }
     }
     else if (wynik == 3)
     {
-        samochód.Zatrzymaj();
+        Console.Write("Podaj indeks samochodu, który chcesz zatrzymać: ");
+        int i = parsuj(Console.ReadLine());
+        if (i >= 0 && i < samochody.Count)
+        {
+            samochody[i].Zatrzymaj();
+        }
+        else
+        {
+            Console.WriteLine("Niepoprawny indeks");
+        }
     }
     else if (wynik == 4)
     {
-        samochód.Promocja();
+        Console.Write("Podaj indeks samochodu, któremu chcesz zrobić promocję: ");
+        int i = parsuj(Console.ReadLine());
+        if (i >= 0 && i < samochody.Count)
+        {
+            samochody[i].Promocja();
+        }
+        else
+        {
+            Console.WriteLine("Niepoprawny indeks");
+        }
     }
     else if (wynik == 5)
     {
@@ -66,7 +104,8 @@ while (true)
 
         if (Cena!=-1 || Przebieg != -1.0 || rocznik != -1)
         {
-            samochód = new(Cena, Model, Marka, Przebieg, rocznik);
+            Auto nowy_samochod = new(Cena, Model, Marka, Przebieg, rocznik);
+            samochody.Add(nowy_samochod);
         }
         else
         {
